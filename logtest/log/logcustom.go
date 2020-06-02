@@ -1,26 +1,12 @@
-package log11
-
-import (
-	"fmt"
-	"log"
-)
+package testlog
 
 const (
-	LevelError = iota
-	LevelWarning
-	LevelInformational
-	LevelDebug
+	LevelDebug = iota
+	LevelInfo
+	LevelWarn
+	LevelError
 )
 
-type Logger struct {
-	level int
-	l     *log.Logger
-}
+func main() {
 
-func (ll *Logger) Error(format string, v ...interface{}) {
-	if LevelError > ll.level {
-		return
-	}
-	msg := fmt.Sprintf("[E] "+format, v...)
-	ll.l.Printf(msg)
 }
