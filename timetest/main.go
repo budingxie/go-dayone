@@ -11,7 +11,7 @@ type name int
 const (
 	zhangsan name = 123
 )
-func (m name) String() string {
+func (m *name) String() string {
 	return "zhangsan"
 }
 */
