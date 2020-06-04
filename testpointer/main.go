@@ -36,7 +36,27 @@ func testPointer2() {
 
 }
 
+func testPointer3() {
+	type Num struct {
+		i string
+		j int64
+	}
+	n := Num{i: "SSADREEEEA", j: 1}
+
+	njPointer := unsafe.Pointer(&(n.j))
+
+	jPointer := (*int64)(njPointer)
+	*jPointer = 153
+	fmt.Printf("n.i: %s, n.j: %d\n", n.i, n.j)
+
+	fmt.Println(unsafe.Offsetof(n.j))
+	iPointer := (*string)(unsafe.Pointer(uintptr(njPointer) - unsafe.Offsetof(n.j)))
+	*iPointer = "1233"
+	fmt.Printf("n.i: %s, n.j: %d\n", n.i, n.j)
+}
+
 func main() {
 	//testPointer1()
-	testPointer2()
+	//testPointer2()
+	testPointer3()
 }
