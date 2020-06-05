@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 )
 
 func myWeb(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "这是一个开始,学http定义接口的开始")
+	io.WriteString(w, "hi golang")
 }
 
 func main() {
-	http.HandleFunc("/", myWeb)
-	fmt.Println("服务器即将开启，访问地址 http://localhost:8080")
+	http.HandleFunc("/hello", myWeb)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("服务器开启错误: ", err)
